@@ -17,7 +17,7 @@ import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.List;
 
-import pro.dbro.glance.SECRETS;
+//import pro.dbro.glance.SECRETS;
 import pro.dbro.glance.http.TrustManager;
 
 /**
@@ -92,7 +92,7 @@ public class HtmlPage implements SpritzerMedia {
 //        }
         final HtmlPage page = new HtmlPage(null);
         String encodedUrlToParse = Uri.encode(url);
-        String requestUrl = String.format("http://api.diffbot.com/v2/article?url=%s&token=%s", encodedUrlToParse, SECRETS.getDiffbotKey());
+        String requestUrl = String.format("http://api.diffbot.com/v2/article?url=%s&token=%s", encodedUrlToParse, "2efef432c72b5a923408e04353c39a7c");
         Log.i(TAG, "Loading url: " + requestUrl);
 //        TrustManager.makeTrustRequest(context, requestUrl, new TrustManager.TrustRequestCallback() {
 //            @Override
