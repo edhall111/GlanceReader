@@ -1,0 +1,19 @@
+Feature: "Scrubbing" through document
+
+Users should be able to "scrub" a document, or in other words move position back and forth through the entire length of the text, choosing the position that they want to read at.
+
+Background: Given the user has loaded in an article/text file/link/ebook/etc. to read from using the Glance reader.
+
+Scenario: User wants to scrub forward through document
+
+	Given the user has loaded in an article/text file/link/ebook/etc. to read from using the Glance reader
+	When the user slides the bar forward
+	And document is not at the end
+	Then the reader should move to that position in document
+
+Scenario: User wants to scrub backwards through the document
+
+    Given the user has loaded in an article/text file/link/ebook/etc. to read from using the Glance reader
+	When the user slides the bar backwards
+	And document is not at beginning
+	Then the reader should move to that position in document
