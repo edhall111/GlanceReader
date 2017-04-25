@@ -8,7 +8,10 @@
         android:title="@string/donate"
         android:showAsAction="ifRoom" />
         -->
-
+    <item
+        android:id="@+id/action_scrub"
+        android:showAsAction="ifRoom"
+        android:title="@string/scrub" />
     <item
         android:id="@+id/action_speed"
         android:icon="?attr/speed_icon"

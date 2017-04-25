@@ -7,6 +7,7 @@ import android.preference.PreferenceManager;
 
 import pro.dbro.glance.fragments.PreferencesFragment;
 import pro.dbro.glance.fragments.WpmDialogFragment;
+import pro.dbro.glance.fragments.ScrubDialogFragment;
 
 /**
  * Created by davidbrodsky on 9/21/14.
@@ -25,7 +26,8 @@ public class GlancePrefsManager {
     private static final String APP_WORD = "word";
     private static final String APP_WPM = "wpm";
     private static final String APP_SAW_ONBOARDER = "onboarder";
-
+    //add key for scrubber
+    private static final String APP_SCRUB = "scrub";
     /** Default SharedPreferences Values */
     public static final int DEFAULT_APP_WPM = 500;
 
@@ -74,7 +76,6 @@ public class GlancePrefsManager {
     public static void clearState(Context context) {
         context.getSharedPreferences(APP_PREFS, Context.MODE_PRIVATE).edit().clear().apply();
     }
-
     public static void setWpm(Context context, int wpm) {
         SharedPreferences.Editor editor = context.getSharedPreferences(APP_PREFS, Context.MODE_PRIVATE).edit();
         editor.putInt(APP_WPM, Math.max(wpm, WpmDialogFragment.MIN_WPM))
@@ -82,6 +83,17 @@ public class GlancePrefsManager {
     }
 
     public static int getWpm(Context context) {
+        SharedPreferences prefs = context.getSharedPreferences(APP_PREFS, Context.MODE_PRIVATE);
+        return prefs.getInt(APP_WPM, DEFAULT_APP_WPM);
+    }
+    //pos stuff///////////////////////////
+    public static void setPos(Context context, int pos) {
+        SharedPreferences.Editor editor = context.getSharedPreferences(APP_PREFS, Context.MODE_PRIVATE).edit();
+        editor.putInt(APP_WPM, Math.max(pos, WpmDialogFragment.MIN_WPM))
+                .apply();
+    }
+
+    public static int getPos(Context context) {
         SharedPreferences prefs = context.getSharedPreferences(APP_PREFS, Context.MODE_PRIVATE);
         return prefs.getInt(APP_WPM, DEFAULT_APP_WPM);
     }
