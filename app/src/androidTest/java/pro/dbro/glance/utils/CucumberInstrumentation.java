@@ -1,17 +1,18 @@
-package pro.dbro.glance.test;
+package pro.dbro.glance.utils;
 
 import android.os.Bundle;
-import android.support.test.runner.MonitoringInstrumentation;
+import android.support.test.runner.AndroidJUnitRunner;
+
 import cucumber.api.android.CucumberInstrumentationCore;
 
-public class Instrumentation extends MonitoringInstrumentation{
-    private final CucumberInstrumentationCore instrumentationCore = new CucumberInstrumentationCore(this);
+public class CucumberInstrumentation extends AndroidJUnitRunner {
+    private final CucumberInstrumentationCore instrumentationCore =
+            new CucumberInstrumentationCore(this);
 
     @Override
     public void onCreate(final Bundle bundle) {
-        super.onCreate(bundle);
         instrumentationCore.create(bundle);
-        start();
+        super.onCreate(bundle);
     }
 
     @Override
