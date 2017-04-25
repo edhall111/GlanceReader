@@ -35,4 +35,5 @@
     <string name="share_dialog_title">Share this Read?</string>
     <string name="yes">Yes</string>
     <string name="no">No</string>
+    <string name="scrub">Scrub Text</string>
 </resources>
