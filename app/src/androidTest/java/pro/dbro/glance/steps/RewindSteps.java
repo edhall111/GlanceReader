@@ -6,8 +6,8 @@ import cucumber.api.java.en.When;
 import cucumber.api.java.en.Then;
 
 public class RewindSteps {
-    @Given("^I have a book open$")
-    public void I_have_book_open() {
+    @Given("^I have (.*) open$")
+    public void I_have_book_open(String bookTitle) {
 
     }
 
