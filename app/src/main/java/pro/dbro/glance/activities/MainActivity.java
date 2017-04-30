@@ -59,7 +59,10 @@ public class MainActivity extends FragmentActivity implements View.OnSystemUiVis
     private boolean mFinishAfterSpritz = false;
 
     public static Intent createIntentFor(Context activity) {
-        return new Intent(activity, MainActivity.class);
+        Intent intent = new Intent(activity, MainActivity.class);
+        intent.setAction(Intent.ACTION_VIEW);
+
+        return intent;
     }
 
     // Listener that's called when we finish querying the items and subscriptions we own
