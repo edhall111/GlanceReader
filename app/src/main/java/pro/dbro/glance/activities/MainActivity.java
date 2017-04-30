@@ -4,6 +4,7 @@ import android.app.ActionBar;
 import android.app.AlertDialog;
 import android.app.DialogFragment;
 import android.app.FragmentTransaction;
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.net.Uri;
@@ -56,6 +57,10 @@ public class MainActivity extends FragmentActivity implements View.OnSystemUiVis
     private boolean mIsPremium;
     private Menu mMenu;
     private boolean mFinishAfterSpritz = false;
+
+    public static Intent createIntentFor(Context activity) {
+        return new Intent(activity, MainActivity.class);
+    }
 
     // Listener that's called when we finish querying the items and subscriptions we own
     IabHelper.QueryInventoryFinishedListener mGotInventoryListener = new IabHelper.QueryInventoryFinishedListener() {
