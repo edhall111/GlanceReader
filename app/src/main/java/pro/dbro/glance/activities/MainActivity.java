@@ -42,6 +42,7 @@ import pro.dbro.glance.events.ChapterSelectedEvent;
 import pro.dbro.glance.events.WpmSelectedEvent;
 import pro.dbro.glance.formats.HtmlPage;
 import pro.dbro.glance.formats.SpritzerMedia;
+import pro.dbro.glance.fragments.ScrubDialogFragment;
 import pro.dbro.glance.fragments.SpritzFragment;
 import pro.dbro.glance.fragments.TocDialogFragment;
 import pro.dbro.glance.fragments.WpmDialogFragment;
@@ -226,7 +227,13 @@ public class MainActivity extends FragmentActivity implements View.OnSystemUiVis
         // automatically handle clicks on the Home/Up button, so long
         // as you specify a parent activity in AndroidManifest.xml.
         int id = item.getItemId();
-        if (id == R.id.action_speed) {
+        if(id ==R.id.action_scrub){
+            FragmentTransaction ft = getFragmentManager().beginTransaction();
+            DialogFragment scrubFragment = ScrubDialogFragment.newInstance();
+            scrubFragment.show(ft, "dialog");
+            return true;
+        }
+        else if (id == R.id.action_speed) {
             FragmentTransaction ft = getFragmentManager().beginTransaction();
             DialogFragment newFragment = WpmDialogFragment.newInstance();
             newFragment.show(ft, "dialog");

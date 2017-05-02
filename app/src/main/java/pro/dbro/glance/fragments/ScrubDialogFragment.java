@@ -55,7 +55,7 @@ public class ScrubDialogFragment extends DialogFragment {
         mScrubLabel = (TextView) v.findViewById(R.id.scrubText);
         mScrubSeek = ((SeekBar) v.findViewById(R.id.seekBarScrub));
 
-        //mWpmSeek.setProgress((int) ((float) 100 * mWpm / MAX_WPM));
+        mScrubSeek.setProgress((int) ((float) 100));
         //mWpmLabel.setText(mWpm + " WPM");
 
         mScrubSeek.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
@@ -66,8 +66,6 @@ public class ScrubDialogFragment extends DialogFragment {
                 mScrubLabel.setText(posStr);
                 getDialog().setTitle(posStr);
                 //my stuff
-                mAnimationRunning = true;
-                mView.startAnimation(mCurrentAnimation);
 //                if (mPos >= WHOAH_THRESHOLD_WPM + 50 && !mAnimationRunning) {
 //                    setTrippin(true);
 //                } else if (mPos <= WHOAH_THRESHOLD_WPM - 50 && mAnimationRunning) {
@@ -87,7 +85,7 @@ public class ScrubDialogFragment extends DialogFragment {
         });
 
         AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
-        builder.setTitle(getActivity().getString(R.string.set_wpm))
+        builder.setTitle(getActivity().getString(R.string.scrub))
                 .setView(v);
         mView = v;
         return builder.create();
