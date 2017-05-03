@@ -1,3 +1,6 @@
+// Apache License 2.0
+// https://github.com/tobiasheine/Movies/
+
 package pro.dbro.glance;
 
 import android.support.annotation.IdRes;

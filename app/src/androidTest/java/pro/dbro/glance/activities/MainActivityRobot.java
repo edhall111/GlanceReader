@@ -4,11 +4,6 @@ import android.support.test.InstrumentationRegistry;
 import android.support.test.rule.ActivityTestRule;
 
 import pro.dbro.glance.Robot;
-import pro.dbro.glance.R;
-
-import static android.support.test.espresso.Espresso.onView;
-import static android.support.test.espresso.assertion.ViewAssertions.matches;
-import static android.support.test.espresso.matcher.ViewMatchers.withId;
 
 public class MainActivityRobot extends Robot<MainActivityRobot> {
 

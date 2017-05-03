@@ -2,14 +2,13 @@ package pro.dbro.glance.steps;
 
 import android.support.test.rule.ActivityTestRule;
 
-import java.net.URL;
-
-import cucumber.api.PendingException;
+import cucumber.api.java.After;
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.When;
 import cucumber.api.java.en.Then;
 import pro.dbro.glance.activities.MainActivity;
 import pro.dbro.glance.activities.MainActivityRobot;
+import pro.dbro.glance.utils.ActivityFinisher;
 
 
 public class ShareTextSteps {
@@ -29,5 +28,10 @@ public class ShareTextSteps {
     @Then("^The application will begin reading the selected text$")
     public void beginTextReader(){
         //Have GlanceReader begin reading through the selected text given.
+    }
+
+    @After
+    public void tearDown() {
+        ActivityFinisher.finishOpenActivities();
     }
 }
