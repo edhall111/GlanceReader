@@ -1,6 +1,7 @@
 package pro.dbro.glance;
 
 import android.support.annotation.IdRes;
+import android.support.v4.app.Fragment;
 
 import static android.support.test.espresso.Espresso.onView;
 import static android.support.test.espresso.assertion.ViewAssertions.matches;
@@ -18,7 +19,6 @@ public abstract class Robot<T extends Robot> {
         Thread.sleep(seconds * 1000);
         return (T) this;
     }
-
 
     public <K> K toRobot(Class<K> robotClass) throws IllegalAccessException, InstantiationException {
         return robotClass.newInstance();

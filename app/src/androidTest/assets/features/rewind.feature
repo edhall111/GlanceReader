@@ -5,6 +5,7 @@ Feature: Rewind functionality
   I want to be able to jump back a sentence or paragraph
 
   Scenario: Rewind back a sentence
-    Given I have Moby Dick open
+    Given I have content://com.android.externalstorage.documents/document/primary%3Amoby-dick.epub open
+      And The word Some is displayed
     When I click rewind
-    Then The word should be displayed
+    Then The word Call should be displayed

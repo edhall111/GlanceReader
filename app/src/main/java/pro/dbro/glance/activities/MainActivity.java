@@ -10,7 +10,9 @@ import android.content.Intent;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
+import android.os.Environment;
 import android.support.v4.app.FragmentActivity;
+import android.support.v4.provider.DocumentFile;
 import android.text.Html;
 import android.util.Log;
 import android.view.Menu;
@@ -58,6 +60,14 @@ public class MainActivity extends FragmentActivity implements View.OnSystemUiVis
     private boolean mIsPremium;
     private Menu mMenu;
     private boolean mFinishAfterSpritz = false;
+
+    public static Intent createIntentFor(Context activity, String bookUri) {
+        Intent intent = new Intent(activity, MainActivity.class);
+        intent.setData(Uri.parse(bookUri));
+        intent.setAction(Intent.ACTION_VIEW);
+
+        return intent;
+    }
 
     public static Intent createIntentFor(Context activity) {
         Intent intent = new Intent(activity, MainActivity.class);

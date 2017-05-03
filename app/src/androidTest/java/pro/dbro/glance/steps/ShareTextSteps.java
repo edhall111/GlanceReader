@@ -15,7 +15,7 @@ import pro.dbro.glance.activities.MainActivityRobot;
 public class ShareTextSteps {
     private final MainActivityRobot mainActivityRobot = MainActivityRobot.create();
 
-    @Given("^The selectedText is readable$")
+    @Given("^The selected text: (.*) is readable$")
     public void isSelectedTextReadable(String sharedText){
         mainActivityRobot.launchMainActivityScreen(new ActivityTestRule<>(MainActivity.class));
         //See if selected text is readable or not.

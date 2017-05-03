@@ -10,6 +10,6 @@ Feature: Being able to share a website or selected text to the application
     Then The application will open the website and begin reading
 
   Scenario:  Sharing a selected text to GlanceReader
-    Given The selected text is readable
+    Given The selected text: <shared text> is readable
     When A selected text is shared to GlanceReader
     Then The application will begin reading the selected text
