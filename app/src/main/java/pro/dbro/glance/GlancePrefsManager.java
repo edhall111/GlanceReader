@@ -30,6 +30,7 @@ public class GlancePrefsManager {
     private static final String APP_SCRUB = "scrub";
     /** Default SharedPreferences Values */
     public static final int DEFAULT_APP_WPM = 500;
+    public static final float DEFAULT_APP_POS = 0;
 
     public static boolean getShouldShowOnboarder(Context context) {
         boolean result = context.getSharedPreferences(APP_PREFS, Context.MODE_PRIVATE)
@@ -52,13 +53,14 @@ public class GlancePrefsManager {
                 .commit();
     }
 
-    public static void saveState(Context context, int chapter, String uri, int wordIdx, String title, int wpm) {
+    public static void saveState(Context context, int chapter, String uri, int wordIdx, String title, int wpm, float pos) {
         SharedPreferences.Editor editor = context.getSharedPreferences(APP_PREFS, Context.MODE_PRIVATE).edit();
         editor.putInt(APP_CHAPTER, chapter)
                 .putString(APP_URI, uri)
                 .putInt(APP_WORD, wordIdx)
                 .putString(APP_TITLE, title)
                 .putInt(APP_WPM, wpm)
+                .putFloat(APP_SCRUB, pos)
                 .apply();
     }
 
@@ -69,7 +71,8 @@ public class GlancePrefsManager {
                 prefs.getString(APP_URI, null),
                 prefs.getInt(APP_WORD, 0),
                 prefs.getString(APP_TITLE, null),
-                prefs.getInt(APP_WPM, 500)
+                prefs.getInt(APP_WPM, 500),
+                prefs.getFloat(APP_SCRUB, 0)
                 );
     }
 
@@ -87,15 +90,15 @@ public class GlancePrefsManager {
         return prefs.getInt(APP_WPM, DEFAULT_APP_WPM);
     }
     //pos stuff///////////////////////////
-    public static void setPos(Context context, int pos) {
+    public static void setPos(Context context, float pos) {
         SharedPreferences.Editor editor = context.getSharedPreferences(APP_PREFS, Context.MODE_PRIVATE).edit();
-        editor.putInt(APP_WPM, Math.max(pos, WpmDialogFragment.MIN_WPM))
+        editor.putFloat(APP_SCRUB, Math.max(pos, ScrubDialogFragment.MIN_POS))
                 .apply();
     }
 
-    public static int getPos(Context context) {
+    public static float getPos(Context context) {
         SharedPreferences prefs = context.getSharedPreferences(APP_PREFS, Context.MODE_PRIVATE);
-        return prefs.getInt(APP_WPM, DEFAULT_APP_WPM);
+        return prefs.getFloat(APP_SCRUB, DEFAULT_APP_POS);
     }
 
     public static SharePref getShareMode(Context context) {
@@ -128,13 +131,15 @@ public class GlancePrefsManager {
         private int mWordIdx;
         private String mTitle;
         private int mWpm;
+        private float mPos;
 
-        public SpritzState(int chapter, String uri, int wordIdx, String title, int wpm) {
+        public SpritzState(int chapter, String uri, int wordIdx, String title, int wpm, float pos) {
             mChapter = chapter;
             mUri = uri;
             mWordIdx = wordIdx;
             mTitle = title;
             mWpm = wpm;
+            mPos = pos;
         }
 
         public boolean hasUri() {

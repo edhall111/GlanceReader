@@ -29,6 +29,7 @@ import com.squareup.otto.Subscribe;
 
 import java.util.List;
 
+import pro.dbro.glance.AppSpritzer;
 import pro.dbro.glance.adapters.AdapterUtils;
 import pro.dbro.glance.GlanceApplication;
 import pro.dbro.glance.GlancePrefsManager;
@@ -57,6 +58,7 @@ public class MainActivity extends FragmentActivity implements View.OnSystemUiVis
     private static final int THEME_LIGHT = 0;
     private static final int THEME_DARK = 1;
     private IabHelper mBillingHelper;
+    public AppSpritzer mSpritz;
     private boolean mIsPremium;
     private Menu mMenu;
     private boolean mFinishAfterSpritz = false;
@@ -320,7 +322,7 @@ public class MainActivity extends FragmentActivity implements View.OnSystemUiVis
         }
     }
 
-    private SpritzFragment getSpritzFragment() {
+    public SpritzFragment getSpritzFragment() {
         return ((SpritzFragment) getSupportFragmentManager().findFragmentByTag(SPRITZ_FRAG_TAG));
     }
 

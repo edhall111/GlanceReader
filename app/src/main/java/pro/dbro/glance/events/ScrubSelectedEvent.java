@@ -5,13 +5,13 @@ package pro.dbro.glance.events;
  */
 
 public class ScrubSelectedEvent {
-    private final int mPos;
+    private final float mPos;
 
-    public ScrubSelectedEvent(int pos) {
+    public ScrubSelectedEvent(float pos) {
         this.mPos = pos;
     }
 
-    public int getPos() {
+    public float getPos() {
         return this.mPos;
     }
 }

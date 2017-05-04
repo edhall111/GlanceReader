@@ -183,7 +183,8 @@ public class AppSpritzer extends Spritzer {
                     mMediaUri.toString(),
                     mCurWordIdx,
                     mMedia.getTitle(),
-                    mWPM);
+                    mWPM,
+                    mCurWordIdx);
         }
     }
 
