@@ -16,20 +16,29 @@ import android.widget.TextView;
 
 import com.squareup.otto.Bus;
 
+import pro.dbro.glance.AppSpritzer;
 import pro.dbro.glance.GlanceApplication;
 import pro.dbro.glance.GlancePrefsManager;
 import pro.dbro.glance.R;
+import pro.dbro.glance.fragments.SpritzFragment;
+import pro.dbro.glance.activities.MainActivity;
 import pro.dbro.glance.events.ScrubSelectedEvent;
 import pro.dbro.glance.lib.Spritzer;
+import pro.dbro.glance.lib.SpritzerTextView;
 
 
 public class ScrubDialogFragment extends DialogFragment {
+    public static final float MAX_POS = 100;
+    public static final float MIN_POS = 0;
+
     private View mView;
-    private Animation mCurrentAnimation;
-    private boolean mAnimationRunning;
+    //private Animation mCurrentAnimation;
+    //private boolean mAnimationRunning;
+    private SpritzerTextView mSpritzView;
+    private SpritzFragment.SpritzFragmentHandler mHandler;
     private SeekBar mScrubSeek;
     private TextView mScrubLabel;
-    private int mPos;
+    private float mPos;
     private Bus mBus;
 
     public static ScrubDialogFragment newInstance() {
@@ -41,28 +50,30 @@ public class ScrubDialogFragment extends DialogFragment {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         //TODO add get pos to glanceprefsmanager
-        //mPos = GlancePrefsManager.getPos(getActivity());
-        mAnimationRunning = false;
+        mPos = GlancePrefsManager.getPos(getActivity());
+        //mAnimationRunning = false;
 
         GlanceApplication app = (GlanceApplication) getActivity().getApplication();
         this.mBus = app.getBus();
     }
 
     @Override
-    public Dialog onCreateDialog(Bundle savedInstanceState) {
+    public Dialog onCreateDialog(final Bundle savedInstanceState) {
 
         View v = getActivity().getLayoutInflater().inflate(R.layout.fragment_dialog_scrub, null);
         mScrubLabel = (TextView) v.findViewById(R.id.scrubText);
         mScrubSeek = ((SeekBar) v.findViewById(R.id.seekBarScrub));
 
-        mScrubSeek.setProgress((int) ((float) 100));
+        mScrubSeek.setProgress((int) ((float)50));
         //mWpmLabel.setText(mWpm + " WPM");
 
         mScrubSeek.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
             @Override
             public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
                 //mPos = Math.max(MIN_WPM, (int) ((progress / 100.0) * MAX_WPM));
-                String posStr = mPos + " words of ";
+                ///////////////////////////////////////
+                mPos = Math.max(MIN_POS, (int)((progress/100.0)*MAX_POS));
+                String posStr = mPos + "% of words out of 100%" ;
                 mScrubLabel.setText(posStr);
                 getDialog().setTitle(posStr);
                 //my stuff
