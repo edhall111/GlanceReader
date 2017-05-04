@@ -106,4 +106,15 @@
         android:layout_alignLeft="@+id/spritzText"
         android:layout_alignStart="@+id/spritzText"
         android:layout_marginBottom="48dp" />
+    <Button
+        android:id="@+id/action_jump"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="100dp"
+        android:layout_marginStart="34dp"
+        android:background="@android:drawable/ic_media_ff"
+        android:layout_above="@+id/chapter"
+        android:layout_alignLeft="@+id/rewind"
+        android:layout_alignStart="@+id/spritzText"
+        android:layout_marginBottom="48dp" />
 </RelativeLayout>
