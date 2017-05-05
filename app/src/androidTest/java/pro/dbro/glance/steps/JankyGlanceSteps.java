@@ -7,7 +7,7 @@ import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
 import pro.dbro.glance.utils.ActivityFinisher;
 
-public class YahooPipesSteps {
+public class JankyGlanceSteps {
 
     @Given("^The application is started$")
     public void the_application_is_started() {
